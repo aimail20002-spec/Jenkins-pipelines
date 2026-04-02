@@ -1,57 +1,34 @@
-// File: Jenkinsfile
 pipeline {
     agent any
-
-    environment {
-        NODE_ENV = "development"
-    }
-
     stages {
-        stage('Checkout') {
-            steps {
-                echo "🔄 Checking out source code..."
-                checkout scm
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
-                echo "📦 Installing npm dependencies..."
-                sh 'npm install'
+                echo '📦 Installing npm dependencies...'
+                bat 'npm install'
             }
         }
-
         stage('Build') {
             steps {
-                echo "🛠 Building project..."
-                sh 'npm run build || echo "No build script defined"'
+                echo '🏗️ Building project...'
+                bat 'npm run build'
             }
         }
-
         stage('Test') {
             steps {
-                echo "✅ Running tests..."
-                sh 'npm test'
+                echo '🧪 Running tests...'
+                bat 'npm test'
             }
         }
-
         stage('Deploy') {
             steps {
-                echo "🚀 Deploying application..."
-                sh 'npm run deploy'
+                echo '🚀 Deploying project...'
+                bat 'echo Deploy step here'
             }
         }
     }
-
     post {
         always {
-            echo "🔔 Pipeline finished. Check results in Jenkins."
-        }
-        success {
-            echo "🎉 Pipeline succeeded!"
-        }
-        failure {
-            echo "❌ Pipeline failed. Check logs."
+            echo '🔔 Pipeline finished.'
         }
     }
 }
