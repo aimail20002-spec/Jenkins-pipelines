@@ -1,0 +1,14 @@
+// File: package.json
+{
+  "name": "jenkins-demo",
+  "version": "1.0.0",
+  "description": "Demo Node.js project for Jenkins pipeline",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"No tests yet\"",
+    "deploy": "echo \"Deployment step - customize for your app\""
+  },
+  "author": "For Ai",
+  "license": "MIT"
+}
